@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>QSR</title>
+	<!-- Style sheets -->
+	<link rel="stylesheet"  href="css/lib/jquery.mobile-1.3.0.css">
+	<link rel="stylesheet"  href="css/lib/mobiscroll.custom-2.5.0.min.css">
+	<link rel="stylesheet"  href="css/main.css">
+	
+	<!-- JS files -->
+	<script src="js/cordova-2.0.0.js"></script>
+	<script type="text/javascript" charset="utf-8"	src="./js/childbrowser.js"></script>
+	<script type="text/javascript" charset="utf-8" src="./js/facebook.js"></script>
+	
+	<script src="js/jquery.js"></script>
+	<script src="js/jquery.mobile-1.3.0.js"></script>
+	<script src="js/mobiscroll.custom-2.5.0.min.js"></script>
+	<script src="js/main.js"></script>
+	
+	
+     <script type="text/javascript">
+        function onBodyLoad()
+        {
+         	//document.addEventListener("deviceready", onDeviceReady, false);
+      	}
+   	</script>
+
+</head>
+<body>
+<!-- Body -->
+<div data-role="page" class="jqm-demos jqm-demos-home" style="background: #000000 
+    url('images/qsr-bg.png');background-size:100% 100%; ">
+	
+<!-- Food title image -->
+    <div style="background: #000000 url('images/title-bg.png');">
+    	<div style="padding-top:10px;padding-bottom:5px;">
+    		
+    		<img src="images/back-btn.png" style="padding-left:10px;" alt="back button" onClick="javascript:Back()" />
+    		
+      		<img src="images/qsr-title.png" style="position:absolute;left:45%;" alt="main logo" />
+      		
+      	</div>
+	</div>
+	
+	<!-- Page Content -->
+	<div data-role="content" class="jqm-content" style="padding:10px;">
+		
+		<div class="register" style="margin-top:60px">
+		<div style="height:50px;">
+			<span class="lspan"><label>User Name</label><label class="colon">:</label></span>
+			<span class="rspan"><input type="text"  id="txt_userName" category="text" alert="Please Enter User Name"></span>
+		</div>
+		<div style="height:50px;">
+			<span class="lspan"><label>Password</label><label class="colon">:</label></span>
+			<span class="rspan"><input  type="password"  id="txt_pwd" category="text" alert="Please Enter Password"></span>
+		</div>
+		
+		<div style="height:50px;">
+			<span class="lspan"><label></label></span>
+			<span class="submit"><img style="margin-top:10px;" src="images/login-btn.png" onclick="javascript:validateForm()"/></span>
+		</div>
+		<div>
+		
+	
+		
+	</div>
+</div>
+
+<script>
+
+function validateForm(){
+var isValidForm = true;
+
+$('.register input').each(function(){
+			if(!isValidForm)
+			 return false;
+
+	       if(this.value.trim().length == 0){
+	       isValidForm = false;
+	       alert(this.getAttribute("alert"));
+	       this.focus();
+	       }
+   
+});
+
+if(isValidForm)
+{
+ 	$.mobile.changePage('menu.html', {
+        transition: "slide" 
+    });
+}
+}
+String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');};
+</script>
+	
+</body>
+</html>

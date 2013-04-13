@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<head>
+	
+</head>
+<body>
+<!-- Body -->
+<div data-role="page" class="jqm-demos jqm-demos-home" style="background: #000000 
+    url('images/qsr-bg.png');background-size:100% 100%; ">
+	
+<!-- Food title image -->
+    <div style="background: #000000 url('images/title-bg.png');">
+    	<div style="padding-top:10px;padding-bottom:5px;">
+    		
+    		<img src="images/back-btn.png" style="padding-left:10px;" alt="back button" onClick="javascript:Back()" />
+    		
+      		<img src="images/qsr-title.png" style="position:absolute;left:45%;" alt="main logo" />
+      		
+      	</div>
+	</div>
+	
+	<!-- Page Content -->
+	<div data-role="content" class="jqm-content" style="padding-top:5px">
+		
+		<div align="center" style="text-shadow:none;color:yellow;">
+			<h3>Personal Details</h3>
+		</div>
+		<div style="height:40px;">
+			<label for="textinput-hide" class="ui-hidden-accessible">First Name:</label>
+			
+			<input name="textinput-hide" id="textinput-hide" placeholder="First Name" category="text" alert="Please Enter First Name" type="text">
+		</div>
+		<div style="height:40px;">
+			<label for="textinput-hide" class="ui-hidden-accessible">Last name:</label>
+			<input name="textinput-hide" id="textinput-hide" placeholder="First Name" category="text" alert="Please Enter First Name" type="text">
+		</div>
+		<div style="height:40px;">
+			<label for="textinput-hide" class="ui-hidden-accessible">Date of Birth:</label>
+			<span class="rspan"><input  type="text" name="test_default" id="test_default" placeholder="Date of Birth" category="text" alert="Please Enter Date of Birth" value="DOB"></span>
+		</div>
+		<div style="height:40px;">
+			<label for="textinput-hide" class="ui-hidden-accessible">Email:</label>
+			<input name="textinput-hide" id="textinput-hide" placeholder="Email" category="text" alert="Please Enter First Name" type="text">
+		</div>
+		<div align="center" style="text-shadow:none;color:yellow;">
+			<h3>Login Credentials</h3>
+		</div>
+		<div style="height:40px;">
+			<label for="textinput-hide" class="ui-hidden-accessible">User Name:</label>
+			<input name="textinput-hide" id="textinput-hide" placeholder="User Name" category="text" alert="Please Enter First Name" type="text">
+		</div>
+		<div style="height:40px;">
+			<label for="textinput-hide" class="ui-hidden-accessible">Password:</label>
+			<input name="textinput-hide" id="textinput-hide" placeholder="Password" category="text" alert="Please Enter First Name" type="password">
+		</div>
+		<div style="height:40px;">
+			<label for="textinput-hide" class="ui-hidden-accessible">Password confirmation:</label>
+			<input name="textinput-hide" id="textinput-hide" placeholder="Password confirmation" category="text" alert="Please Enter First Name" type="password">
+		</div>
+		<div>
+		<div style="margin:0 auto;text-align:center;">
+			<span class="submit"><img style="margin-top:10px;" data-role="none" src="images/submit-btn.png" onClick="javascript:validateForm()"/></span>
+		</div>
+		
+	
+		
+	</div>
+	  <div data-role="fieldcontain" style="visibility: hidden">
+                    <label for="demo">Demo</label>
+                    <select name="demo" id="demo" class="changes">
+                        <option value="date" selected>Date</option>
+	<option value="datetime" >Datetime</option>
+	<option value="time" >Time</option>
+	<!--Demos-->
+                    </select>
+                </div>
+</div>
+<script>
+
+	function Login(){
+	   $.mobile.changePage('login.html', {
+            transition: "slide" 
+        });
+	}
+
+	function Back(){
+	   $.mobile.changePage('index.html', {
+            transition: "slide" 
+        });
+	}
+
+
+function validateForm(){
+var isValidForm = true;
+
+$('.register input').each(function(){
+	if(!isValidForm)
+	 return false;
+	 
+switch (this.getAttribute("category")) {
+	case "text":
+	       if(this.value.trim().length == 0){
+	       isValidForm = false;
+	       alert(this.getAttribute("alert"));
+	       this.focus();
+	       }
+		
+		break;
+	case "email":
+				var re =/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+				if(this.value.trim().length == 0){
+				 isValidForm = false;
+	             alert("Please Enter Email Address");
+	             this.focus();
+				}
+			else if(!this.value.match(re))
+			{
+			isValidForm = false;
+			  alert("Please Enter Valid Email Address");
+			this.focus();
+			}
+			
+			    
+		break
+
+	default:
+		break;
+}
+   
+});
+
+if(isValidForm)
+{
+if($('#txt_confPwd').val() != $('#txt_pwd').val())
+{
+alert("Passwords does't match'");
+return;
+}
+Login();
+}
+String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g, '');};
+
+
+}
+	
+	</script>
+	
+	 <script type="text/javascript">
+        $(function () {
+            var curr = new Date().getFullYear();
+            var opt = {
+
+            }
+
+            opt.date = {preset : 'date',minDate: new Date(1900,3,10,9,22), maxDate: new Date()};
+	//opt.datetime = { preset : 'datetime', minDate: new Date(1900,3,10,9,22), maxDate: new Date(2014,7,30,15,44), stepMinute: 5  };
+	<!--Script-->
+
+            $('select.changes').bind('change', function() {
+                var demo = $('#demo').val();
+                $(".demos").hide();
+                if (!($("#demo_"+demo).length))
+                    demo = 'default';
+
+                $("#demo_default").show();
+                $('#test_default').val('').scroller('destroy').scroller($.extend(opt["date"], { theme: "android" ,mode: "scroller", display: "bottom", lang:  ""}));
+            });
+
+            $('#demo').trigger('change');
+        });
+    </script>
+	
+</body>
+</html>

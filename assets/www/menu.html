@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+<!-- Body -->
+<div data-role="page" class="jqm-demos jqm-demos-home" style="background: #000000 
+    url('images/qsr-bg.png');background-size:100% 100%; ">
+	
+	<div style="background: #000000 url('images/title-bg.png');">
+    	<div style="padding-top:10px;padding-bottom:5px;">
+    		
+    		<img src="images/back-btn.png" style="padding-left:10px;" alt="back button" onClick="javascript:WelcomeBack()" />
+    		
+      		<img src="images/qsr-title.png" style="position:absolute;left:45%;" alt="main logo" />
+      		
+      	</div>
+	</div>
+
+	<!-- Page Content -->
+	<div data-role="content" class="jqm-content" style="padding:10px;">
+	
+	<style>
+	.menu label{
+	color:#ffffff;
+	font-size:16px;
+	display:block;
+	margin-bottom:5px;
+	}
+	.menu img{
+	display:block;
+	margin-bottom:20px;
+	}
+	.menu .firstOption{
+	margin-top:25px;
+	}
+	.ok-remind .btnOk{
+	margin-top:20px;
+	}
+	</style>
+	
+	<!-- Wlecome image And next button -->
+	 <div align="center" style="margin-top:20px" class="menu">
+      <label>Save your favorite menu to</label>
+      <label>save time every time you</label>
+      <label>order through QSR!</label>
+      
+      <img  class="firstOption" src="images/option1-btn.png"  onClick="javascript:showMenu()"/>
+      <img   src="images/option2-btn.png"  onClick="javascript:showMenu()"/>
+      <img   src="images/option3-btn.png"  onClick="javascript:showMenu()"/>
+      
+	</div>
+	 <div align="center" class="ok-remind"> <img class="btnOk"  src="images/ok-btn.png"  onClick="javascript:showMenu()" /> <img   src="images/remind-btn.png"  onClick="javascript:showMenu()" style="margin-right:20px;"/></div>
+	
+	</div>
+</div>
+
+<script>
+	function showMenu(){
+		alert("test");
+        var Url = "http://localhost:3000/users.json";
+		$.ajax({
+        	type: "GET",
+        	url: Url,
+        	dataType: "jsonp",
+        	success: function (response) {
+        		console.log("success");
+            	alert(response);
+            	alert("success");
+        	},
+        	error: function (xhr, status, errorThrown) {
+        		console.debug(xhr); console.debug(errorThrown);
+        		console.log("failure");
+        		alert("failure");
+	    		alert("Status is "+xhr.status);
+	    		alert("Status is "+xhr.readyState);
+	    		alert(xhr.responseText);
+            	alert("Error occured is " + errorThrown);
+        	}
+    	});
+     }
+</script>
+	
+</body>
+</html>

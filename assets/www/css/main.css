@@ -1,0 +1,36 @@
+
+
+
+ label{
+color:#ffffff;
+text-shadow:none;
+color:#FFFF00
+}
+
+.colon {
+	float:right;
+	padding-right: 5px;
+	font-size:16px;
+	font-weight:bold;
+}
+
+.register .lspan{
+width:40%;
+height:25px;
+float: left;
+text-align:rignt !important;
+padding-top: 15px;
+}
+
+.register .rspan{
+width:60%;
+height:40px;
+float: right;
+}
+.register  .submit img{
+margin-top:10px !important;
+}
+
+
+
+
